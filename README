@@ -61,7 +61,9 @@ features and to make it better.
 
 ****************
 * Installation *
-****************
+**************** 
+0. run install.sh or do the following steps: 
+
 1. Install various development related packages
  $ sudo apt-get install build-essential
  $ sudo apt-get install git cmake
