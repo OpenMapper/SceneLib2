@@ -1,10 +1,8 @@
 #!/bin/bash
 
-mkdir -p ~/scenelib/
-mkdir -p ~/scenelib/third-party/
-
-echo "SceneLib is going to be installed on: "
-echo ~/scenelib/
+# mkdir -p third-party/
+_mydir="$(pwd)"
+echo "The current working directory: $_mydir"
 
 echo "Going to update your computer..."
 sudo apt-get update
@@ -24,35 +22,25 @@ sudo apt-get install libeigen3-dev
 sudo apt-get install libboost-all-dev
 
 # 4. Install OpenCV
-# sudo apt-get install libopencv-dev python-opencv
+sudo apt-get install libopencv-dev python-opencv
+
+# 4. Install helping packages for visualization
+sudo apt-get install libxmu-dev libxi-dev
 
 echo "Going to compile some dependencies..."
 
-cd ~/scenelib/third-party/
-wget https://github.com/opencv/opencv/archive/2.4.13.zip
-tar xvf opencv-2.4.13.zip
-cd opencv-2.4.13
-mkdir build
-cd build
-cmake ..
-make -j4
-sudo make install
-
-
-cd ~/scenelib/third-party/
+cd $_mydir
+cd third-party/
 git clone https://github.com/stevenlovegrove/Pangolin.git
 cd Pangolin
-mkdir build
+mkdir -p build
 cd build
 cmake ..
 make -j4
 sudo make install
 
-
-cd ~/scenelib/
-git clone git://github.com/OpenMapper/SceneLib2.git SceneLib2
-cd SceneLib2
-mkdir build
+cd $_mydir
+mkdir -p build
 cd build
 cmake ..
 make -j4
